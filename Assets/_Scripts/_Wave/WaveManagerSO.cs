@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Tower.Assets._Scripts._General;
 using UnityEngine;
 
 namespace Tower.Assets._Scripts._Wave
@@ -6,8 +7,12 @@ namespace Tower.Assets._Scripts._Wave
     [CreateAssetMenu(fileName = "WaveManagerSO", menuName = "SO/Wave/WaveManagerSO", order = 1)]
     public class WaveManagerSO : ScriptableObject
     {
-        [SerializeField] private float WaveDelayTime;
+        [SerializeField] private WaveViewModel _waveViewModel;
+        [SerializeField] private float _waveDelayTime;
+
         private MonoBehaviour _mono;
+        private int _waveNumber;
+
 
         public void Init(MonoBehaviour mono)
         {
@@ -19,15 +24,24 @@ namespace Tower.Assets._Scripts._Wave
         {
             float time = 0f;
 
+            WaveViewData _waveViewData = new WaveViewData();
+
             while (true)
             {
                 time += Time.deltaTime;
 
-                if(time > WaveDelayTime)
+                if (time > _waveDelayTime)
                 {
-                    Debug.Log("StartNextWave");
                     time = 0f;
+                    _waveNumber++;
                 }
+
+                //To avoid creating new object every frame.
+                _waveViewData.Progress = time;
+                _waveViewData.WaveNumber = _waveNumber;
+                _waveViewData.MaxValue = _waveDelayTime;
+
+                _waveViewModel.WaveProgress.Value = _waveViewData;
 
                 yield return new WaitForEndOfFrame();
             }
