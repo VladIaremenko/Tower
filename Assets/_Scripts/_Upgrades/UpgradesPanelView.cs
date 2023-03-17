@@ -8,6 +8,10 @@ namespace Tower.Assets._Scripts._Upgrades
     {
         [SerializeField] private UpgradesViewModel _upgradesViewModel;
 
+        [SerializeField] private UpgradeButtonView _damageButton;
+        [SerializeField] private UpgradeButtonView _speedButton;
+        [SerializeField] private UpgradeButtonView _rangeButton;
+
         private void OnEnable()
         {
             _upgradesViewModel.CurrentTowerData.AddListener(HandleData);
@@ -20,7 +24,9 @@ namespace Tower.Assets._Scripts._Upgrades
 
         private void HandleData(UpgradesViewData data)
         {
-            
+            _damageButton.SetText($"Damage {data.Damage}");
+            _speedButton.SetText($"Speed {data.Speed}");
+            _rangeButton.SetText($"Range {data.Range}");
         }
     }
 }
