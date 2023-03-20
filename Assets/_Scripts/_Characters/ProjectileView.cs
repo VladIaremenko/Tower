@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Tower.Assets._Scripts._Enemy;
 using UnityEngine;
 
@@ -21,6 +20,11 @@ namespace Tower.Assets._Scripts._Characters
         private void FixedUpdate()
         {
             transform.position += _direction * _speed * Time.fixedDeltaTime;
+
+            if (Vector3.Distance(_charactersViewModel.Player.position, transform.position) > 5)
+            {
+                ObjectPooler.Destroy(gameObject);
+            }
         }
 
         private Transform GetClosestItem(List<Transform> items, Vector3 origin)
@@ -49,12 +53,12 @@ namespace Tower.Assets._Scripts._Characters
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if(collision.TryGetComponent<EnemyMoveView>(out EnemyMoveView view))
+            if (collision.TryGetComponent<EnemyMoveView>(out EnemyMoveView view))
             {
                 view.TakeDamage(_damage);
             }
 
-            gameObject.SetActive(false);
+            ObjectPooler.Destroy(gameObject);
         }
 
         public void Init(float damage)

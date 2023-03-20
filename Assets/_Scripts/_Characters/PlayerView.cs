@@ -12,7 +12,6 @@ namespace Tower.Assets._Scripts._Characters
         [SerializeField] private CharactersViewModel _charactersViewModel;
         [SerializeField] private UpgradesViewModel _upgradesViewModel;
         [SerializeField] private ProjectileView _projectilePrefab;
-        [SerializeField] private Transform _projectileParent;
         [SerializeField] private Transform _rangeTranform;
 
         private float _damage;
@@ -60,9 +59,9 @@ namespace Tower.Assets._Scripts._Characters
 
                 if (_charactersViewModel.Enemies.Any((x) => (Vector3.Distance(x.position, transform.position) <= _range) && x.gameObject.activeInHierarchy))
                 {
-                    var item = Instantiate(_projectilePrefab, _projectileParent);
+                    var item = ObjectPooler.Generate(_projectilePrefab.gameObject);
                     item.transform.position = transform.position;
-                    item.Init(_damage);
+                    item.GetComponent<ProjectileView>().Init(_damage);
 
                     yield return new WaitForSeconds(_reloadSpeed);
 
@@ -77,11 +76,6 @@ namespace Tower.Assets._Scripts._Characters
         {
             collision.gameObject.SetActive(false);
             //SceneManager.LoadScene(0);
-        }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.DrawSphere(transform.position, _range);
         }
     }
 }

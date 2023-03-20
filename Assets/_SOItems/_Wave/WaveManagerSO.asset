@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: WaveManagerSO
   m_EditorClassIdentifier: 
   _waveViewModel: {fileID: 11400000, guid: e5a342007f73ad34ea9cbeb1a1208b95, type: 2}
-  _waveDelayTime: 3
+  _waveDelayTime: 5
