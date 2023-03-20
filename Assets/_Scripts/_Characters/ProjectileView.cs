@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Tower.Assets._Scripts._Enemy;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace Tower.Assets._Scripts._Characters
         [SerializeField] private CharactersViewModel _charactersViewModel;
         [SerializeField] private float _speed;
         private Vector3 _direction;
+        private float _damage;
 
         private void OnEnable()
         {
@@ -52,8 +54,17 @@ namespace Tower.Assets._Scripts._Characters
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            collision.gameObject.SetActive(false);
+            if(collision.TryGetComponent<EnemyMoveView>(out EnemyMoveView view))
+            {
+                view.TakeDamage(_damage);
+            }
+
             gameObject.SetActive(false);
+        }
+
+        public void Init(float damage)
+        {
+            _damage = damage;
         }
     }
 }

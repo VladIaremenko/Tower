@@ -138,3 +138,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _charactersViewModel: {fileID: 11400000, guid: cee4db27139c6654fa72fe04ccc522cc, type: 2}
   _speed: 0.25
+  _startHP: 3

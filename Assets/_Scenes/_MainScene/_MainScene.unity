@@ -1327,7 +1327,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _charactersViewModel: {fileID: 11400000, guid: cee4db27139c6654fa72fe04ccc522cc, type: 2}
   _upgradesViewModel: {fileID: 11400000, guid: 52367a2545e85e04a811c0c8e3fb4918, type: 2}
-  _projectilePrefab: {fileID: 2567925615558043489, guid: c30b6f8b6a617184580ae2a8df1f04c3, type: 3}
+  _projectilePrefab: {fileID: 2891743583342587981, guid: c30b6f8b6a617184580ae2a8df1f04c3, type: 3}
+  _projectileParent: {fileID: 1001621373}
 --- !u!1 &855609992
 GameObject:
   m_ObjectHideFlags: 0
@@ -1358,8 +1359,40 @@ Transform:
   m_Children:
   - {fileID: 1897409163}
   - {fileID: 1684497658}
+  - {fileID: 1001621373}
   m_Father: {fileID: 0}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1001621372
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1001621373}
+  m_Layer: 6
+  m_Name: ProjectileParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1001621373
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001621372}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 855609993}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1007611520
 GameObject:
@@ -2115,8 +2148,8 @@ MonoBehaviour:
   _waveViewModel: {fileID: 11400000, guid: e5a342007f73ad34ea9cbeb1a1208b95, type: 2}
   _charactersViewModel: {fileID: 11400000, guid: cee4db27139c6654fa72fe04ccc522cc, type: 2}
   _enemyPrefab: {fileID: 4203675870800237251, guid: b114ad38e7afa24489eb712acae0f360, type: 3}
-  _enemyCount: 10
-  _maxRadius: 5
+  _enemyCount: 5
+  _maxRadius: 3
   _minRadius: 2
 --- !u!1 &1717694893
 GameObject:

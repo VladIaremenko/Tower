@@ -12,7 +12,8 @@ namespace Tower.Assets._Scripts._Characters
     {
         [SerializeField] private CharactersViewModel _charactersViewModel;
         [SerializeField] private UpgradesViewModel _upgradesViewModel;
-        [SerializeField] private GameObject _projectilePrefab;
+        [SerializeField] private ProjectileView _projectilePrefab;
+        [SerializeField] private Transform _projectileParent;
 
         private float _damage;
         private float _reloadSpeed;
@@ -55,7 +56,8 @@ namespace Tower.Assets._Scripts._Characters
                     continue;
                 }
 
-                var item = Instantiate(_projectilePrefab, transform);
+                var item = Instantiate(_projectilePrefab, _projectileParent);
+                item.Init(_damage);
                 item.transform.position = transform.position;
                 yield return new WaitForSeconds(_reloadSpeed);
             }
