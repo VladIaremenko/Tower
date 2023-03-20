@@ -22,11 +22,11 @@ namespace Tower.Assets._Scripts._Upgrades
             _upgradesViewModel.CurrentTowerData.RemoveListener(HandleData);
         }
 
-        private void HandleData(UpgradesViewData data)
+        private void HandleData(UpgradesViewPanelData data)
         {
-            _damageButton.SetText($"Damage {data.Damage}");
-            _speedButton.SetText($"Speed {data.Speed}");
-            _rangeButton.SetText($"Range {data.Range}");
+            _damageButton.SetText($"Damage: {data.DamageUpgradePrice}$");
+            _speedButton.SetText($"Speed: {data.SpeedUpgradeSpeed}$");
+            _rangeButton.SetText($"Range: {data.RangeUpgradeSpeed}$");
         }
     }
 }

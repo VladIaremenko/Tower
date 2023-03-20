@@ -22,11 +22,11 @@ namespace Tower.Assets._Scripts._General
     }
 
     [Serializable]
-    public class UpgradesViewData
+    public class UpgradesViewPanelData
     {
-        public float Damage;
-        public float Range;
-        public float Speed;
+        public float DamageUpgradePrice;
+        public float RangeUpgradeSpeed;
+        public float SpeedUpgradeSpeed;
     }
 }
 

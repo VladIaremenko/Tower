@@ -9,6 +9,11 @@ namespace Tower.Assets._Scripts._Upgrades
         public List<float> DamageUpgrades;
         public List<float> SpeedUpgrades;
         public List<float> RangeUpgrades;
+
+        public float GetPrice(float data)
+        {
+            return data * 5;
+        }
     }
 }
 
