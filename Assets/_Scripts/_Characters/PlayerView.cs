@@ -1,10 +1,9 @@
-using System;
 using System.Collections;
+using System.Linq;
 using Tower.Assets._Scripts._Enemy;
 using Tower.Assets._Scripts._General;
 using Tower.Assets._Scripts._Upgrades;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Tower.Assets._Scripts._Characters
 {
@@ -14,6 +13,7 @@ namespace Tower.Assets._Scripts._Characters
         [SerializeField] private UpgradesViewModel _upgradesViewModel;
         [SerializeField] private ProjectileView _projectilePrefab;
         [SerializeField] private Transform _projectileParent;
+        [SerializeField] private Transform _rangeTranform;
 
         private float _damage;
         private float _reloadSpeed;
@@ -39,6 +39,8 @@ namespace Tower.Assets._Scripts._Characters
             _damage = stats.Damage;
             _reloadSpeed = 1 / stats.Speed;
             _range = stats.Range;
+
+            _rangeTranform.localScale = Vector2.one * _range * 2;
         }
 
         private void Start()
@@ -50,16 +52,24 @@ namespace Tower.Assets._Scripts._Characters
         {
             while (true)
             {
-                if(_charactersViewModel.Enemies.Count == 0)
+                if (_charactersViewModel.Enemies.Count == 0)
                 {
                     yield return new WaitForFixedUpdate();
                     continue;
                 }
 
-                var item = Instantiate(_projectilePrefab, _projectileParent);
-                item.transform.position = transform.position;
-                item.Init(_damage);
-                yield return new WaitForSeconds(_reloadSpeed);
+                if (_charactersViewModel.Enemies.Any((x) => (Vector3.Distance(x.position, transform.position) <= _range) && x.gameObject.activeInHierarchy))
+                {
+                    var item = Instantiate(_projectilePrefab, _projectileParent);
+                    item.transform.position = transform.position;
+                    item.Init(_damage);
+
+                    yield return new WaitForSeconds(_reloadSpeed);
+
+                    continue;
+                }
+
+                yield return new WaitForFixedUpdate();
             }
         }
 
@@ -67,6 +77,11 @@ namespace Tower.Assets._Scripts._Characters
         {
             collision.gameObject.SetActive(false);
             //SceneManager.LoadScene(0);
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.DrawSphere(transform.position, _range);
         }
     }
 }
