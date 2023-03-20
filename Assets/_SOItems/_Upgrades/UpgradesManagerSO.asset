@@ -15,3 +15,4 @@ MonoBehaviour:
   _storageSO: {fileID: 11400000, guid: 00f3f80e640ba98429c79fa8a579a187, type: 2}
   _upgradesHolderSO: {fileID: 11400000, guid: 6a1dad13aaf042f4cba3cbb034d2f699, type: 2}
   _upgradesViewModel: {fileID: 11400000, guid: 52367a2545e85e04a811c0c8e3fb4918, type: 2}
+  _currencyManagerSO: {fileID: 11400000, guid: 34cb4041f5d677e4c92b525559bd5b3c, type: 2}

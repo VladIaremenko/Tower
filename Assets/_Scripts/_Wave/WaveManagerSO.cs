@@ -16,8 +16,11 @@ namespace Tower.Assets._Scripts._Wave
 
         public void Init(MonoBehaviour mono)
         {
+            _waveNumber = 0;
+
             _mono = mono;
             _mono.StartCoroutine(WaveCoroutine());
+
         }
 
         private IEnumerator WaveCoroutine()

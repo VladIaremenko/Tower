@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Tower.Assets._Scripts._Currency;
+﻿using Tower.Assets._Scripts._Currency;
 using Tower.Assets._Scripts._General;
 using Tower.Assets._Scripts._Storage;
 using UnityEngine;
@@ -24,10 +22,9 @@ namespace Tower.Assets._Scripts._Upgrades
         {
             var data = new UpgradesViewPanelData();
 
-            data.DamageUpgradePrice = _upgradesHolderSO.GetPrice(_upgradesHolderSO.DamageUpgrades[_storageSO.UserDataContainer.Upgrades[0]]);
-            data.RangeUpgradeSpeed = _upgradesHolderSO.GetPrice(_upgradesHolderSO.RangeUpgrades[_storageSO.UserDataContainer.Upgrades[1]]);
-            data.SpeedUpgradeSpeed = _upgradesHolderSO.GetPrice(_upgradesHolderSO.DamageUpgrades[_storageSO.UserDataContainer.Upgrades[2]]);
-
+            data.DamageUpgradePrice = _upgradesHolderSO.GetDamageUpgradePrice();
+            data.RangeUpgradeSpeed = _upgradesHolderSO.GetRandgeUpgradePrice();
+            data.SpeedUpgradeSpeed = _upgradesHolderSO.GetSpeedUpgradePrice();
             _upgradesViewModel.CurrentTowerData.Value = data;
         }
 
@@ -45,28 +42,34 @@ namespace Tower.Assets._Scripts._Upgrades
         {
             if(id == 0)
             {
-                TryBuyUpgrade(_upgradesHolderSO.DamageUpgrades, id);
+                TryBuyUpgrade(_upgradesHolderSO.GetDamageUpgradePrice(), id, _upgradesHolderSO.DamageUpgrades.Count);
             }
 
             if (id == 1)
             {
-                TryBuyUpgrade(_upgradesHolderSO.SpeedUpgrades, id);
+                TryBuyUpgrade(_upgradesHolderSO.GetSpeedUpgradePrice(), id, _upgradesHolderSO.SpeedUpgrades.Count);
             }
 
             if (id == 2)
             {
-                TryBuyUpgrade(_upgradesHolderSO.RangeUpgrades, id);
+                TryBuyUpgrade(_upgradesHolderSO.GetRandgeUpgradePrice(), id, _upgradesHolderSO.RangeUpgrades.Count);
             }
         }
 
-        private void TryBuyUpgrade(List<float> prices, int id)
+        private void TryBuyUpgrade(float price, int id, int maxValue)
         {
-            if (_currencyManagerSO.TryBuyItem(prices[_storageSO.UserDataContainer.Upgrades[id]]))
+            if(_storageSO.UserDataContainer.Upgrades[id] >= maxValue - 1)
             {
-                _storageSO.UserDataContainer.Upgrades[id]++;
+                Debug.Log("MaxUpgrades");
+                return;
             }
 
-            RefreshViewData();
+            if (_currencyManagerSO.TryBuyItem(price))
+            {
+                _storageSO.UserDataContainer.Upgrades[id]++;
+                _storageSO.UserDataContainer = _storageSO.UserDataContainer;
+                RefreshViewData();
+            }
         }
     }
 }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f5545dd59184c41a836311f17b1d81, type: 3}
   m_Name: UpgradesHolderSO
   m_EditorClassIdentifier: 
+  _storage: {fileID: 11400000, guid: 00f3f80e640ba98429c79fa8a579a187, type: 2}
   DamageUpgrades:
   - 1
   - 2

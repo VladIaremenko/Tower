@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b533dd8b03f781a49a22aa86ffb11164, type: 3}
-  m_Name: CurrencyManagerSO
+  m_Script: {fileID: 11500000, guid: a00006a2bc0af8146af908d5611a1fd3, type: 3}
+  m_Name: CurrencyViewModel
   m_EditorClassIdentifier: 
-  _storage: {fileID: 11400000, guid: 00f3f80e640ba98429c79fa8a579a187, type: 2}
-  _currencyViewModel: {fileID: 11400000, guid: e6774295d8d5d144ab9f6a09e443a924, type: 2}
