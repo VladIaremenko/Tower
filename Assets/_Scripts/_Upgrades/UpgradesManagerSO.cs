@@ -23,8 +23,19 @@ namespace Tower.Assets._Scripts._Upgrades
             var data = new UpgradesViewPanelData();
 
             data.DamageUpgradePrice = _upgradesHolderSO.GetDamageUpgradePrice();
-            data.RangeUpgradeSpeed = _upgradesHolderSO.GetRandgeUpgradePrice();
             data.SpeedUpgradeSpeed = _upgradesHolderSO.GetSpeedUpgradePrice();
+            data.RangeUpgradeSpeed = _upgradesHolderSO.GetRandgeUpgradePrice();
+
+            data.DamageIsMaxed = _storageSO.UserDataContainer.Upgrades[0]
+                >= _upgradesHolderSO.DamageUpgrades.Count - 1;
+
+            data.SpeedIsMaxed = _storageSO.UserDataContainer.Upgrades[1]
+                >= _upgradesHolderSO.SpeedUpgrades.Count - 1;
+
+            data.RangeIsMaxed = _storageSO.UserDataContainer.Upgrades[2]
+                >= _upgradesHolderSO.RangeUpgrades.Count - 1;
+
+
             _upgradesViewModel.CurrentTowerData.Value = data;
         }
 
@@ -40,28 +51,34 @@ namespace Tower.Assets._Scripts._Upgrades
 
         private void HandleUpgradeItem(int id)
         {
-            if(id == 0)
+            if (id == 0)
             {
-                TryBuyUpgrade(_upgradesHolderSO.GetDamageUpgradePrice(), id, _upgradesHolderSO.DamageUpgrades.Count);
+                _upgradesViewModel.CurrentTowerData.Value.DamageIsMaxed =
+                    TryBuyUpgrade(_upgradesHolderSO.GetDamageUpgradePrice(),
+                    id, _upgradesHolderSO.DamageUpgrades.Count);
             }
 
             if (id == 1)
             {
-                TryBuyUpgrade(_upgradesHolderSO.GetSpeedUpgradePrice(), id, _upgradesHolderSO.SpeedUpgrades.Count);
+                _upgradesViewModel.CurrentTowerData.Value.SpeedIsMaxed =
+                    TryBuyUpgrade(_upgradesHolderSO.GetSpeedUpgradePrice(),
+                    id, _upgradesHolderSO.SpeedUpgrades.Count);
             }
 
             if (id == 2)
             {
-                TryBuyUpgrade(_upgradesHolderSO.GetRandgeUpgradePrice(), id, _upgradesHolderSO.RangeUpgrades.Count);
+                _upgradesViewModel.CurrentTowerData.Value.RangeIsMaxed =
+                    TryBuyUpgrade(_upgradesHolderSO.GetRandgeUpgradePrice(),
+                    id, _upgradesHolderSO.RangeUpgrades.Count);
             }
         }
 
-        private void TryBuyUpgrade(float price, int id, int maxValue)
+        private bool TryBuyUpgrade(float price, int id, int maxValue)
         {
-            if(_storageSO.UserDataContainer.Upgrades[id] >= maxValue - 1)
+            if (_storageSO.UserDataContainer.Upgrades[id] >= maxValue - 1)
             {
                 Debug.Log("MaxUpgrades");
-                return;
+                return true;
             }
 
             if (_currencyManagerSO.TryBuyItem(price))
@@ -70,6 +87,8 @@ namespace Tower.Assets._Scripts._Upgrades
                 _storageSO.UserDataContainer = _storageSO.UserDataContainer;
                 RefreshViewData();
             }
+
+            return false;
         }
     }
 }

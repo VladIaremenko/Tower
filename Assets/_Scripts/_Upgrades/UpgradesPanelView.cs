@@ -1,5 +1,4 @@
-﻿using System;
-using Tower.Assets._Scripts._General;
+﻿using Tower.Assets._Scripts._General;
 using UnityEngine;
 
 namespace Tower.Assets._Scripts._Upgrades
@@ -24,11 +23,9 @@ namespace Tower.Assets._Scripts._Upgrades
 
         private void HandleData(UpgradesViewPanelData data)
         {
-            _damageButton.SetText($"Damage: {data.DamageUpgradePrice}$");
-            _speedButton.SetText($"Speed: {data.SpeedUpgradeSpeed}$");
-            _rangeButton.SetText($"Range: {data.RangeUpgradeSpeed}$");
+            _damageButton.SetText(data.DamageIsMaxed ? "Damage is\nMaxed" : $"Damage: {data.DamageUpgradePrice}$");
+            _speedButton.SetText(data.SpeedIsMaxed ? "Speed is\nMaxed" : $"Speed: {data.SpeedUpgradeSpeed}$");
+            _rangeButton.SetText(data.RangeIsMaxed ? "Range is\nMaxed" : $"Range: {data.RangeIsMaxed}$");
         }
     }
 }
-
-

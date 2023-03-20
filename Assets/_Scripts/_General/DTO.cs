@@ -27,6 +27,10 @@ namespace Tower.Assets._Scripts._General
         public float DamageUpgradePrice;
         public float RangeUpgradeSpeed;
         public float SpeedUpgradeSpeed;
+
+        public bool DamageIsMaxed;
+        public bool RangeIsMaxed;
+        public bool SpeedIsMaxed;
     }
 }
 
