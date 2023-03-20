@@ -20,6 +20,7 @@ namespace Tower.Assets._Scripts._Characters
         private void OnEnable()
         {
             _waveViewModel.OnSpawnWaveEvent += HandleWaveSpawnEvent;
+            _charactersViewModel.Enemies.Clear();
         }
 
         private void OnDisable()
@@ -32,7 +33,7 @@ namespace Tower.Assets._Scripts._Characters
             for (int i = 0; i < _enemyCount; i++)
             {
                 var item = Instantiate(_enemyPrefab, transform);
-
+                _charactersViewModel.Enemies.Add(item.transform);
                 item.transform.position = GetRandomPosition();
             }
         }
