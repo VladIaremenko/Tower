@@ -36,7 +36,7 @@ namespace Tower.Assets._Scripts._Upgrades
                 >= _upgradesHolderSO.RangeUpgrades.Count - 1;
 
             var statsData = new PlayerStatsData(
-                _upgradesHolderSO.GetRangeStats(),
+                _upgradesHolderSO.GetDamageStats(),
                 _upgradesHolderSO.GetSpeedStats(), 
                 _upgradesHolderSO.GetRangeStats());
 

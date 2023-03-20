@@ -15,6 +15,8 @@ namespace Tower.Assets._Scripts._General
 
         private void Start()
         {
+            Application.targetFrameRate = 60;
+
             _waveManager.Init(this);
             _storageSO.Init();
             _upgradesManagerSO.Init();
