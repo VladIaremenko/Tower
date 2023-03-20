@@ -17,5 +17,3 @@ namespace Tower.Assets._Scripts._Upgrades
         }
     }
 }
-
-

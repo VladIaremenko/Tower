@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Tower.Assets._Scripts._Currency;
 using Tower.Assets._Scripts._General;
 using Tower.Assets._Scripts._Storage;
 using UnityEngine;
@@ -11,8 +13,14 @@ namespace Tower.Assets._Scripts._Upgrades
         [SerializeField] private StorageSO _storageSO;
         [SerializeField] private UpgradesHolderSO _upgradesHolderSO;
         [SerializeField] private UpgradesViewModel _upgradesViewModel;
+        [SerializeField] private CurrencyManagerSO _currencyManagerSO;
 
         public void Init()
+        {
+            RefreshViewData();
+        }
+
+        private void RefreshViewData()
         {
             var data = new UpgradesViewPanelData();
 
@@ -35,7 +43,30 @@ namespace Tower.Assets._Scripts._Upgrades
 
         private void HandleUpgradeItem(int id)
         {
-            Debug.Log(id);
+            if(id == 0)
+            {
+                TryBuyUpgrade(_upgradesHolderSO.DamageUpgrades, id);
+            }
+
+            if (id == 1)
+            {
+                TryBuyUpgrade(_upgradesHolderSO.SpeedUpgrades, id);
+            }
+
+            if (id == 2)
+            {
+                TryBuyUpgrade(_upgradesHolderSO.RangeUpgrades, id);
+            }
+        }
+
+        private void TryBuyUpgrade(List<float> prices, int id)
+        {
+            if (_currencyManagerSO.TryBuyItem(prices[_storageSO.UserDataContainer.Upgrades[id]]))
+            {
+                _storageSO.UserDataContainer.Upgrades[id]++;
+            }
+
+            RefreshViewData();
         }
     }
 }
