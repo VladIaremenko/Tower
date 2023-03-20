@@ -13,21 +13,34 @@ namespace Tower.Assets._Scripts._Upgrades
         public List<float> SpeedUpgrades;
         public List<float> RangeUpgrades;
 
+        public float GetDamageStats()
+        {
+            return DamageUpgrades[_storage.UserDataContainer.Upgrades[0]];
+        }
+
+        public float GetSpeedStats()
+        {
+            return SpeedUpgrades[_storage.UserDataContainer.Upgrades[1]];
+        }
+
+        public float GetRangeStats()
+        {
+            return RangeUpgrades[_storage.UserDataContainer.Upgrades[2]];
+        }
+
         public float GetDamageUpgradePrice()
         {
-            return DamageUpgrades[_storage.UserDataContainer.Upgrades[0]] * 5;
+            return GetDamageStats() * 5;
         }
 
         public float GetSpeedUpgradePrice()
         {
-            return SpeedUpgrades[_storage.UserDataContainer.Upgrades[1]] * 5;
+            return GetSpeedStats() * 5;
         }
 
         public float GetRandgeUpgradePrice()
         {
-            return RangeUpgrades[_storage.UserDataContainer.Upgrades[2]] * 5;
+            return GetRangeStats() * 5;
         }
     }
 }
-
-

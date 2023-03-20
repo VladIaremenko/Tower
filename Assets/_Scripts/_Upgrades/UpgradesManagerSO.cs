@@ -35,8 +35,13 @@ namespace Tower.Assets._Scripts._Upgrades
             data.RangeIsMaxed = _storageSO.UserDataContainer.Upgrades[2]
                 >= _upgradesHolderSO.RangeUpgrades.Count - 1;
 
+            var statsData = new PlayerStatsData(
+                _upgradesHolderSO.GetRangeStats(),
+                _upgradesHolderSO.GetSpeedStats(), 
+                _upgradesHolderSO.GetRangeStats());
 
             _upgradesViewModel.CurrentTowerData.Value = data;
+            _upgradesViewModel.CurrentTowerStats.Value = statsData;
         }
 
         private void OnEnable()

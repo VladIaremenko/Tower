@@ -32,6 +32,20 @@ namespace Tower.Assets._Scripts._General
         public bool RangeIsMaxed;
         public bool SpeedIsMaxed;
     }
+
+    public class PlayerStatsData
+    {
+        public float Damage;
+        public float Speed;
+        public float Range;
+
+        public PlayerStatsData(float damage, float speed, float range)
+        {
+            Damage = damage;
+            Speed = speed;
+            Range = range;
+        }
+    }
 }
 
 

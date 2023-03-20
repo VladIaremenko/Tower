@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using Tower.Assets._Scripts._Enemy;
+using Tower.Assets._Scripts._General;
+using Tower.Assets._Scripts._Upgrades;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,11 +11,33 @@ namespace Tower.Assets._Scripts._Characters
     public class PlayerView : MonoBehaviour
     {
         [SerializeField] private CharactersViewModel _charactersViewModel;
+        [SerializeField] private UpgradesViewModel _upgradesViewModel;
         [SerializeField] private GameObject _projectilePrefab;
+
+        private float _damage;
+        private float _reloadSpeed;
+        private float _range;
 
         private void Awake()
         {
             _charactersViewModel.Player = transform;
+        }
+
+        private void OnEnable()
+        {
+            _upgradesViewModel.CurrentTowerStats.AddListener(HandleStatsUpdates);
+        }
+
+        private void OnDisable()
+        {
+            _upgradesViewModel.CurrentTowerStats.RemoveListener(HandleStatsUpdates);
+        }
+
+        private void HandleStatsUpdates(PlayerStatsData stats)
+        {
+            _damage = stats.Damage;
+            _reloadSpeed = 1 / stats.Speed;
+            _range = stats.Range;
         }
 
         private void Start()
@@ -32,7 +57,7 @@ namespace Tower.Assets._Scripts._Characters
 
                 var item = Instantiate(_projectilePrefab, transform);
                 item.transform.position = transform.position;
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(_reloadSpeed);
             }
         }
 

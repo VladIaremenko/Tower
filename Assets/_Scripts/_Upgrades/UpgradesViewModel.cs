@@ -9,6 +9,7 @@ namespace Tower.Assets._Scripts._Upgrades
     public class UpgradesViewModel : ScriptableObject
     {
         public ObservableVariable<UpgradesViewPanelData> CurrentTowerData = new ObservableVariable<UpgradesViewPanelData>();
+        public ObservableVariable<PlayerStatsData> CurrentTowerStats = new ObservableVariable<PlayerStatsData>();
         public event Action<int> UpgradeItemClickEvent = (x) => { };
 
         public void HandleUpgradeClick(int id)
