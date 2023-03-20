@@ -1,11 +1,13 @@
-﻿using Tower.Assets._Scripts._Enemy;
+﻿using Tower.Assets._Scripts._Currency;
+using Tower.Assets._Scripts._Enemy;
 using UnityEngine;
 
 namespace Tower.Assets._Scripts._Characters
 {
-    public class EnemyMoveView : MonoBehaviour
+    public class EnemyView : MonoBehaviour
     {
         [SerializeField] private CharactersViewModel _charactersViewModel;
+        [SerializeField] private CurrencyViewModel _currencyViewModel;
         [SerializeField] private float _speed;
         [SerializeField] private float _startHP;
 
@@ -22,6 +24,7 @@ namespace Tower.Assets._Scripts._Characters
 
             if (_currentHP <= 0)
             {
+                _currencyViewModel.HandleEnemyIsDestroyed();
                 ObjectPooler.Destroy(gameObject);
             }
         }

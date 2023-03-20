@@ -53,7 +53,7 @@ namespace Tower.Assets._Scripts._Characters
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.TryGetComponent<EnemyMoveView>(out EnemyMoveView view))
+            if (collision.TryGetComponent<EnemyView>(out EnemyView view))
             {
                 view.TakeDamage(_damage);
             }

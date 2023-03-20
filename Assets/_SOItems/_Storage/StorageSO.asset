@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724fc4955e5e0604497082dc0262779a, type: 3}
   m_Name: StorageSO
   m_EditorClassIdentifier: 
-  _startBalance: 200
+  _startBalance: 0

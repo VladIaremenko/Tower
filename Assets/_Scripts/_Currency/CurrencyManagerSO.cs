@@ -1,4 +1,5 @@
-﻿using Tower.Assets._Scripts._Storage;
+﻿using System.Diagnostics;
+using Tower.Assets._Scripts._Storage;
 using UnityEngine;
 
 namespace Tower.Assets._Scripts._Currency
@@ -19,6 +20,22 @@ namespace Tower.Assets._Scripts._Currency
             }
 
             return false;
+        }
+
+        private void OnEnable()
+        {
+            _currencyViewModel.OnEnemyDestroyedEvent += HandlePlayerDestroyed;
+        }
+
+        private void OnDisable()
+        {
+            _currencyViewModel.OnEnemyDestroyedEvent -= HandlePlayerDestroyed;
+        }
+
+        private void HandlePlayerDestroyed()
+        {
+            _storage.Balance += 10;
+            RefreshView();
         }
 
         public void Init()

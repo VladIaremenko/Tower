@@ -4,6 +4,7 @@ using Tower.Assets._Scripts._Enemy;
 using Tower.Assets._Scripts._General;
 using Tower.Assets._Scripts._Upgrades;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Tower.Assets._Scripts._Characters
 {
@@ -75,7 +76,7 @@ namespace Tower.Assets._Scripts._Characters
         private void OnTriggerEnter2D(Collider2D collision)
         {
             collision.gameObject.SetActive(false);
-            //SceneManager.LoadScene(0);
+            SceneManager.LoadScene(0);
         }
     }
 }

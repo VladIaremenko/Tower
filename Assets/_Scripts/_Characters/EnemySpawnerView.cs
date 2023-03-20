@@ -30,7 +30,7 @@ namespace Tower.Assets._Scripts._Characters
 
         private void HandleWaveSpawnEvent()
         {
-            for (int i = 0; i < _enemyCount; i++)
+            for (int i = 0; i < _waveViewModel.WaveProgress.Value.WaveNumber + 1; i++)
             {
                 var item = ObjectPooler.Generate(_enemyPrefab);
                 item.gameObject.SetActive(true);

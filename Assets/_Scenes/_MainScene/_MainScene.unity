@@ -2257,9 +2257,9 @@ MonoBehaviour:
   _waveViewModel: {fileID: 11400000, guid: e5a342007f73ad34ea9cbeb1a1208b95, type: 2}
   _charactersViewModel: {fileID: 11400000, guid: cee4db27139c6654fa72fe04ccc522cc, type: 2}
   _enemyPrefab: {fileID: 4203675870800237251, guid: b114ad38e7afa24489eb712acae0f360, type: 3}
-  _enemyCount: 5
-  _maxRadius: 2.8
-  _minRadius: 2
+  _enemyCount: 200
+  _maxRadius: 4
+  _minRadius: 3
 --- !u!1 &1717694893
 GameObject:
   m_ObjectHideFlags: 0

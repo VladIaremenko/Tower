@@ -137,5 +137,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _charactersViewModel: {fileID: 11400000, guid: cee4db27139c6654fa72fe04ccc522cc, type: 2}
+  _currencyViewModel: {fileID: 11400000, guid: e6774295d8d5d144ab9f6a09e443a924, type: 2}
   _speed: 0.25
   _startHP: 3
