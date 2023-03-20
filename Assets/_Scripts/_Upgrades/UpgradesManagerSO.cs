@@ -17,12 +17,26 @@ namespace Tower.Assets._Scripts._Upgrades
             var data = new UpgradesViewPanelData();
 
             data.DamageUpgradePrice = _upgradesHolderSO.GetPrice(_upgradesHolderSO.DamageUpgrades[_storageSO.UserDataContainer.Upgrades[0]]);
-            data.RangeUpgradeSpeed = _upgradesHolderSO.GetPrice(_upgradesHolderSO.RangeUpgrades[_storageSO.UserDataContainer.Upgrades[1]] * 5);
-            data.SpeedUpgradeSpeed = _upgradesHolderSO.GetPrice(_upgradesHolderSO.DamageUpgrades[_storageSO.UserDataContainer.Upgrades[2]] * 5);
+            data.RangeUpgradeSpeed = _upgradesHolderSO.GetPrice(_upgradesHolderSO.RangeUpgrades[_storageSO.UserDataContainer.Upgrades[1]]);
+            data.SpeedUpgradeSpeed = _upgradesHolderSO.GetPrice(_upgradesHolderSO.DamageUpgrades[_storageSO.UserDataContainer.Upgrades[2]]);
 
             _upgradesViewModel.CurrentTowerData.Value = data;
         }
 
+        private void OnEnable()
+        {
+            _upgradesViewModel.UpgradeItemClickEvent += HandleUpgradeItem;
+        }
+
+        private void OnDisable()
+        {
+            _upgradesViewModel.UpgradeItemClickEvent -= HandleUpgradeItem;
+        }
+
+        private void HandleUpgradeItem(int id)
+        {
+            Debug.Log(id);
+        }
     }
 }
 
