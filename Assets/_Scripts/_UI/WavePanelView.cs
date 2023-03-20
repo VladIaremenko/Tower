@@ -27,7 +27,7 @@ namespace Tower.Assets._Scripts._UI
         {
             _slider.maxValue = data.MaxValue;
             _slider.value = data.Progress;
-            _text.text = $"Wave {data.WaveNumber}";
+            _text.text = $"Wave {data.WaveNumber + 1}";
         }
     }
 }

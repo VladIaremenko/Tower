@@ -57,8 +57,8 @@ namespace Tower.Assets._Scripts._Characters
                 }
 
                 var item = Instantiate(_projectilePrefab, _projectileParent);
-                item.Init(_damage);
                 item.transform.position = transform.position;
+                item.Init(_damage);
                 yield return new WaitForSeconds(_reloadSpeed);
             }
         }

@@ -12,12 +12,7 @@ namespace Tower.Assets._Scripts._Characters
         private Vector3 _direction;
         private float _damage;
 
-        private void OnEnable()
-        {
-            RefreshTarget();
-        }
-
-        private void RefreshTarget()
+        public void RefreshTarget()
         {
             var target = GetClosestItem(_charactersViewModel.Enemies, _charactersViewModel.Player.position);
             _direction = (target.position - transform.position).normalized;
@@ -65,6 +60,7 @@ namespace Tower.Assets._Scripts._Characters
         public void Init(float damage)
         {
             _damage = damage;
+            RefreshTarget();
         }
     }
 }
