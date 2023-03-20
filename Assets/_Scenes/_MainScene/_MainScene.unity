@@ -469,7 +469,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 189482f51d324e342b69acffa86541fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.16470589}
   m_FlipX: 0
   m_FlipY: 0
@@ -1054,6 +1054,62 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &542015923
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 542015924}
+  - component: {fileID: 542015925}
+  m_Layer: 0
+  m_Name: Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &542015924
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 542015923}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &542015925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 542015923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf7478115ca1d5245985f15199e99881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseParentTransforms: 1
+  PoolableTypes:
+  - TypeName: Enemy
+    Prefab: {fileID: 4203675870800237251, guid: b114ad38e7afa24489eb712acae0f360, type: 3}
+    SortingTag: Enemy
+    Max: 10
+    AutoExpand: 1
+  - TypeName: Projectile
+    Prefab: {fileID: 2567925615558043489, guid: c30b6f8b6a617184580ae2a8df1f04c3, type: 3}
+    SortingTag: Projectile
+    Max: 10
+    AutoExpand: 1
 --- !u!1 &582721998
 GameObject:
   m_ObjectHideFlags: 0
@@ -2235,7 +2291,7 @@ MonoBehaviour:
   _charactersViewModel: {fileID: 11400000, guid: cee4db27139c6654fa72fe04ccc522cc, type: 2}
   _enemyPrefab: {fileID: 4203675870800237251, guid: b114ad38e7afa24489eb712acae0f360, type: 3}
   _enemyCount: 5
-  _maxRadius: 10
+  _maxRadius: 2.8
   _minRadius: 2
 --- !u!1 &1717694893
 GameObject:

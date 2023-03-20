@@ -12,9 +12,9 @@ namespace Tower.Assets._Scripts._Characters
 
         [Range(1, 1000)]
         [SerializeField] private int _enemyCount;
-        [Range(3, 10)]
+        [Range(1, 10)]
         [SerializeField] private float _maxRadius;
-        [Range(1, 2)]
+        [Range(1, 10)]
         [SerializeField] private float _minRadius;
 
         private void OnEnable()
@@ -32,7 +32,8 @@ namespace Tower.Assets._Scripts._Characters
         {
             for (int i = 0; i < _enemyCount; i++)
             {
-                var item = Instantiate(_enemyPrefab, transform);
+                var item = ObjectPooler.Generate(_enemyPrefab);
+                item.gameObject.SetActive(true);
                 _charactersViewModel.Enemies.Add(item.transform);
                 item.transform.position = GetRandomPosition();
             }

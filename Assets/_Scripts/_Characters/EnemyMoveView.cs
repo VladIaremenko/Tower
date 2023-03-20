@@ -22,7 +22,7 @@ namespace Tower.Assets._Scripts._Characters
 
             if (_currentHP <= 0)
             {
-                gameObject.SetActive(false);
+                ObjectPooler.Destroy(gameObject);
             }
         }
 
