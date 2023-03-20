@@ -20,7 +20,7 @@ namespace Tower.Assets._Scripts._Currency
 
         private void UpdateView(float amount)
         {
-            _text.text = $"{amount}$";
+            _text.text = $"${amount}";
         }
     }
 }

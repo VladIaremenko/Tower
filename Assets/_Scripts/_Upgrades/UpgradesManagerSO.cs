@@ -53,32 +53,29 @@ namespace Tower.Assets._Scripts._Upgrades
         {
             if (id == 0)
             {
-                _upgradesViewModel.CurrentTowerData.Value.DamageIsMaxed =
-                    TryBuyUpgrade(_upgradesHolderSO.GetDamageUpgradePrice(),
-                    id, _upgradesHolderSO.DamageUpgrades.Count);
+                TryBuyUpgrade(_upgradesHolderSO.GetDamageUpgradePrice(),
+                id, _upgradesHolderSO.DamageUpgrades.Count);
             }
 
             if (id == 1)
             {
-                _upgradesViewModel.CurrentTowerData.Value.SpeedIsMaxed =
-                    TryBuyUpgrade(_upgradesHolderSO.GetSpeedUpgradePrice(),
-                    id, _upgradesHolderSO.SpeedUpgrades.Count);
+                TryBuyUpgrade(_upgradesHolderSO.GetSpeedUpgradePrice(),
+                id, _upgradesHolderSO.SpeedUpgrades.Count);
             }
 
             if (id == 2)
             {
-                _upgradesViewModel.CurrentTowerData.Value.RangeIsMaxed =
-                    TryBuyUpgrade(_upgradesHolderSO.GetRandgeUpgradePrice(),
-                    id, _upgradesHolderSO.RangeUpgrades.Count);
+                TryBuyUpgrade(_upgradesHolderSO.GetRandgeUpgradePrice(),
+                id, _upgradesHolderSO.RangeUpgrades.Count);
             }
         }
 
-        private bool TryBuyUpgrade(float price, int id, int maxValue)
+        private void TryBuyUpgrade(float price, int id, int maxValue)
         {
             if (_storageSO.UserDataContainer.Upgrades[id] >= maxValue - 1)
             {
                 Debug.Log("MaxUpgrades");
-                return true;
+                return;
             }
 
             if (_currencyManagerSO.TryBuyItem(price))
@@ -87,8 +84,6 @@ namespace Tower.Assets._Scripts._Upgrades
                 _storageSO.UserDataContainer = _storageSO.UserDataContainer;
                 RefreshViewData();
             }
-
-            return false;
         }
     }
 }

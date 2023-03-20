@@ -25,7 +25,7 @@ namespace Tower.Assets._Scripts._Upgrades
         {
             _damageButton.SetText(data.DamageIsMaxed ? "Damage is\nMaxed" : $"Damage: {data.DamageUpgradePrice}$");
             _speedButton.SetText(data.SpeedIsMaxed ? "Speed is\nMaxed" : $"Speed: {data.SpeedUpgradeSpeed}$");
-            _rangeButton.SetText(data.RangeIsMaxed ? "Range is\nMaxed" : $"Range: {data.RangeIsMaxed}$");
+            _rangeButton.SetText(data.RangeIsMaxed ? "Range is\nMaxed" : $"Range: {data.RangeUpgradeSpeed}$");
         }
     }
 }
