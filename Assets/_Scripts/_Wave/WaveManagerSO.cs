@@ -37,6 +37,7 @@ namespace Tower.Assets._Scripts._Wave
                 {
                     time = 0f;
                     _waveNumber++;
+                    _waveViewModel.SpawnWave();
                 }
 
                 //To avoid creating new object every frame.
